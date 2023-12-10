@@ -13,6 +13,12 @@ export const foodApi = createApi({
   endpoints: (builder) => ({
     getRandom: builder.query({
       query: () => endPoints.getRandom
+    }),
+    getFoodByCategory: builder.query({
+      query: (category: string) => `/filter.php?c=${category}`
+    }),
+    getFoodById: builder.query({
+      query: (id: string) => `/lookup.php?i=${id}`
     })
   })
 });
@@ -21,4 +27,8 @@ export const foodApiReducer = foodApi.reducer;
 export const foodApiReducerName = foodApi.reducerPath;
 export const foodMiddleware = foodApi.middleware;
 
-export const { useGetRandomQuery } = foodApi;
+export const {
+  useGetRandomQuery,
+  useGetFoodByCategoryQuery,
+  useGetFoodByIdQuery
+} = foodApi;
