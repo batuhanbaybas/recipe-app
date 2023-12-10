@@ -30,13 +30,15 @@ const Landing = () => {
         tags={random?.meals[0].strTags}
         instructions={random?.meals[0].strInstructions}
       />
-      <div className="flex flex-wrap py-5 gap-4">
+      <div className=" py-5">
         <h1 className="w-full text-2xl text-center font-semibold">
           Ingredients
         </h1>
-        {ingredients.map((ingredient, index) => {
-          return <RecipeBody key={index} ingredients={ingredient} />;
-        })}
+        <div className="grid grid-cols-4">
+          {ingredients.map((ingredient, index) => {
+            return <RecipeBody key={index} ingredients={ingredient} />;
+          })}
+        </div>
       </div>
     </>
   );
