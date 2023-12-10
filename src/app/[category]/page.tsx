@@ -11,6 +11,10 @@ const CategoryList = () => {
   );
   const router = useRouter();
 
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
       {foodList?.meals.map(

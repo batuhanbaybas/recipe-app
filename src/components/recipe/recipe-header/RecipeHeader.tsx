@@ -32,7 +32,10 @@ const RecipeHeader: React.FC<IRecipeHeader> = ({
         <p className="text-3xl">{area}</p>
         <p className="text-2xl">{category}</p>
         <p className="text-xl text-gray-400">{tags}</p>
-        <p className="text-md pt-3 text-justify">{instructions}</p>
+        <p
+          className="text-md pt-3 text-justify"
+          dangerouslySetInnerHTML={{ __html: instructions }}
+        />
       </div>
     </div>
   );
