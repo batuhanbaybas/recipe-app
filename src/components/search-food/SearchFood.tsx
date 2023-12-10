@@ -13,6 +13,7 @@ const SearchFood = () => {
   const router = useRouter();
   const handleSelect = (value: { id: string }) => {
     router.push(`/recipe/${value.id}`);
+    setSearch("");
   };
 
   const options = useMemo(() => {
@@ -28,9 +29,11 @@ const SearchFood = () => {
   return (
     <AutoComplete
       options={options}
-      onChange={(e) => {
-        setSearch(e.target.value);
-      }}
+      loading={isLoading}
+      value={search as string}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        setSearch(e.target.value)
+      }
       onSelect={handleSelect}
     />
   );

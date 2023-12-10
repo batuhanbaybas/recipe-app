@@ -6,20 +6,25 @@ import { FaSearch } from "react-icons/fa";
 import Menu from "../menu/Menu";
 import { twMerge } from "tailwind-merge";
 import { usePathname } from "next/navigation";
+import Loading from "@/components/loading/Loading";
 
 type IAutoCompleteProps = {
   options: string[];
-  onChange?: (e: any) => void;
   sectionClassName?: string;
   optionClassName?: string;
+  value: string;
+  loading?: boolean;
+  onChange?: (e: any) => void;
   onSelect?: (value: { label: string; value: string; id: string }) => void;
 };
 
 const AutoComplete: React.FC<IAutoCompleteProps> = ({
   options,
-  onChange,
   sectionClassName,
   optionClassName,
+  value,
+  loading,
+  onChange,
   onSelect
 }) => {
   const [open, setOpen] = React.useState<boolean>(false);
@@ -55,6 +60,7 @@ const AutoComplete: React.FC<IAutoCompleteProps> = ({
     <div className="relative">
       <div className="flex gap-x-2  border pr-5 rounded-lg items-center">
         <Input
+          value={value}
           onChange={onChange}
           inputClassName="border-none w-full outline-none"
         />
@@ -63,7 +69,7 @@ const AutoComplete: React.FC<IAutoCompleteProps> = ({
       <div
         ref={ref}
         className={`${open ? "block " : "hidden"} 
-        absolute button-0 w-full z-10 bg-white
+        absolute button-0 w-full  bg-white
         p-2
         border
         shadow-xl
@@ -72,21 +78,25 @@ const AutoComplete: React.FC<IAutoCompleteProps> = ({
         max-h-96
       `}
       >
-        <Menu
-          items={options as any}
-          sectionClassName={twMerge(`
-          ${sectionClassName}
-          `)}
-          optionClassName={twMerge(`
-            bg-white
-            hover:bg-gray-100
-            rounded-none
-            border-none
-             mb-0
-            ${optionClassName}
-            `)}
-          onSelect={onSelect as any}
-        />
+        {loading ? (
+          <Loading />
+        ) : (
+          <Menu
+            items={options as any}
+            sectionClassName={twMerge(`
+              ${sectionClassName}
+              `)}
+            optionClassName={twMerge(`
+                bg-white
+                hover:bg-gray-100
+                rounded-none
+                border-none
+                 mb-0
+                ${optionClassName}
+                `)}
+            onSelect={onSelect as any}
+          />
+        )}
       </div>
     </div>
   );
