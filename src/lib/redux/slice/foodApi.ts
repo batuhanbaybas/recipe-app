@@ -19,6 +19,9 @@ export const foodApi = createApi({
     }),
     getFoodById: builder.query({
       query: (id: string) => `/lookup.php?i=${id}`
+    }),
+    searchFoodByName: builder.query({
+      query: (name: string) => `/search.php?s=${name}`
     })
   })
 });
@@ -30,5 +33,6 @@ export const foodMiddleware = foodApi.middleware;
 export const {
   useGetRandomQuery,
   useGetFoodByCategoryQuery,
-  useGetFoodByIdQuery
+  useGetFoodByIdQuery,
+  useSearchFoodByNameQuery
 } = foodApi;

@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/components/loading/Loading";
 import Card from "@/components/ui/card/Card";
 import { useGetFoodByCategoryQuery } from "@/lib/redux/slice/foodApi";
 import { useParams, useRouter } from "next/navigation";
@@ -12,7 +13,7 @@ const CategoryList = () => {
   const router = useRouter();
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   return (

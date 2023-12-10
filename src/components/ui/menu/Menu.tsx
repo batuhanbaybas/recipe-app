@@ -1,4 +1,3 @@
-import { setConfig } from "next/config";
 import React, { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -8,14 +7,17 @@ type IMenuProps = {
   items?: Array<{
     label: string;
     value: string;
+    id: string;
   }>;
+  onSelect: (value: { label: string; value: string; id: string }) => void;
   children?: React.ReactNode;
 };
 
-const Menu: React.FC<IMenuProps & HTMLAttributes<HTMLSelectElement>> = ({
+const Menu: React.FC<IMenuProps & HTMLAttributes<HTMLUListElement>> = ({
   sectionClassName,
   optionClassName,
   items,
+  onSelect,
   children,
   ...rest
 }) => {
@@ -24,21 +26,27 @@ const Menu: React.FC<IMenuProps & HTMLAttributes<HTMLSelectElement>> = ({
       {children ? (
         children
       ) : (
-        <section {...rest} className={twMerge(` ${sectionClassName}`)}>
+        <ul {...rest} className={twMerge(`${sectionClassName}`)}>
           {items?.map((item, index) => {
             return (
-              <option
+              <li
                 key={index}
-                value={item.value}
                 className={twMerge(
-                  `${optionClassName} mb-8 p-4 rounded-md cursor-pointer border`
+                  `mb-8 p-4 rounded-md cursor-pointer border ${optionClassName} `
                 )}
+                onClick={() =>
+                  onSelect({
+                    label: item.label,
+                    value: item.value,
+                    id: item.id
+                  })
+                }
               >
                 {item.label}
-              </option>
+              </li>
             );
           })}
-        </section>
+        </ul>
       )}
     </>
   );

@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 import Button from "../button/Button";
 import { GrClose } from "react-icons/gr";
 import "./style.css";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type IDrawerProps = {
   className?: string;
@@ -26,7 +26,7 @@ const Drawer: React.FC<IDrawerProps & HTMLAttributes<HTMLDivElement>> = ({
   ...rest
 }) => {
   const [open, setOpen] = React.useState(false);
-  const pathname = usePathname();
+  const pathname = useRouter();
   const drawerRef = React.useRef<HTMLDivElement>(null);
   const triggerDrawer = () => {
     setOpen(!open);

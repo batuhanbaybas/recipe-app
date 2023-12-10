@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/loading/Loading";
 import RecipeDetail from "@/components/recipe/recipe-detail/RecipeDetail";
 import { useGetRandomQuery } from "@/lib/redux/slice/foodApi";
 import React, { useMemo } from "react";
@@ -22,7 +23,7 @@ const Home = () => {
   }, [random]);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   return (

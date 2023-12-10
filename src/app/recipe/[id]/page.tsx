@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/loading/Loading";
 import RecipeDetail from "@/components/recipe/recipe-detail/RecipeDetail";
 import { useGetFoodByIdQuery } from "@/lib/redux/slice/foodApi";
 import { useParams } from "next/navigation";
@@ -23,7 +24,7 @@ const RecipeDetailPage = () => {
   }, [foodDetail]);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   return (
