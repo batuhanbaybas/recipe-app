@@ -70,6 +70,7 @@ const AutoComplete: React.FC<IAutoCompleteProps> = ({
         ref={ref}
         className={`${open ? "block " : "hidden"} 
         absolute button-0 w-full  bg-white
+        z-10
         p-2
         border
         shadow-xl
