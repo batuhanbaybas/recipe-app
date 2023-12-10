@@ -91,7 +91,7 @@ const AutoComplete: React.FC<IAutoCompleteProps> = ({
                 hover:bg-gray-100
                 rounded-none
                 border-none
-                 mb-0
+                 mb-0,
                 ${optionClassName}
                 `)}
             onSelect={onSelect as any}
