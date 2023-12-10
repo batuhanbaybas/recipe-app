@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import SearchFood from "../search-food/SearchFood";
 import CategoryDrawer from "../category/category-drawer/CategoryDrawer";

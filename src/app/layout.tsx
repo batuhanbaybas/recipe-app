@@ -1,5 +1,3 @@
-"use client";
-
 import "./globals.css";
 import StoreProvider from "@/components/provider/Provider";
 import React from "react";
